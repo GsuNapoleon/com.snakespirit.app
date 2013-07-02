@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+.menu {
+	background: url(../icon/menu.png) no-repeat !important;
+}
+.system {
+	background: url(../icon/system.png) no-repeat !important;
+}
+.system_user {
+	background: url(../icon/system_1.png) no-repeat !important;
+}
+.system_config {
+	background: url(../icon/system_2.png) no-repeat !important;
+}
+.system_log {
+	background: url(../icon/system_3.png) no-repeat !important;
+}
+.goods{
+	background: url(../icon/goods.png) no-repeat !important;
+}
+.goodsmaintain{
+	background: url(../icon/goods_1.png) no-repeat !important;
+}
+/*------------------------------------------------------------------------------------------*/
+.setting {
+	background: url(../icon/setting.png) no-repeat !important;
+}
+/*------------------------------------------------------------------------------------------*/
+.information {
+	background: url(../icon/information.png) no-repeat !important;
+}
+/*------------------------------------------------------------------------------------------*/
+.pagetabIco{
+	 background-image:url(../icon/table_multiple.png) !important;
+}
+.add {
+	background-image:url(../icon/add.gif) !important;
+}
+.modify {
+	background-image:url(../icon/edit.jpg) !important;
+}
+.remove {
+	background-image:url(../icon/delete.gif) !important;
+}
+.refresh {
+	background-image:url(../icon/arrow_refresh.png) !important;
+}
+.query {
+	background-image:url(../icon/query.png) !important;
+}

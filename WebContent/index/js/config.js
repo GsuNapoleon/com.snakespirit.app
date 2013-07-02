@@ -1,0 +1,1 @@
+var DTPath = "http://www.anqc.net/";var SKPath = "http://www.anqc.net/skin/default/";var EXPath = "http://www.anqc.net/extend/";var CKDomain = "";var CKPath = "/";var CKPrex = "cjr_";

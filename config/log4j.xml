@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="ConsoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<param name="encoding" value="utf-8" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd hh:mm:ss}:%p %t %c - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- 滚动日志可以作为调试日志,默认分30份,每份10M -->
+	<appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="encoding" value="utf-8" />
+		<!-- 设置File参数：日志输出文件名 -->
+		<param name="File" value="./log/all.output.log" />
+		<!-- 设置是否在重新启动服务时，在原有日志的基础添加新日志 -->
+		<param name="Append" value="true" />
+		<param name="MaxBackupIndex" value="30" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- 设置输出文件项目和格式 -->
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss:SSS} %-4r [%t] %-8p %l |%m%n" />
+		</layout>
+		<!--滤镜设置输出的级别 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" value="DEBUG" />
+			<param name="levelMax" value="FATAL" />
+			<param name="AcceptOnMatch" value="true" />
+		</filter>
+	</appender>
+
+	<!-- 按天日志可以作为监控日志,按实际日期,每天一个文件 -->
+	<appender name="DailyFILE" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="encoding" value="utf-8" />
+		<!-- 设置File参数：日志输出文件名 -->
+		<param name="File" value="./log/daily.log" />
+		<!-- 设置是否在重新启动服务时，在原有日志的基础添加新日志 -->
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- 设置输出文件项目和格式 -->
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss:SSS} %-4r [%t] %-8p %c %x |%m%n" />
+		</layout>
+		<!--滤镜设置输出的级别 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<!-- 输出监控日志的时候需要配合使用过滤器,这里配置使用info -->
+			<param name="levelMin" value="DEBUG" />
+			<param name="levelMax" value="ERROR" />
+			<param name="AcceptOnMatch" value="true" />
+		</filter>
+	</appender>
+
+	<!-- 标准输出日志可以作为调试日志 -->
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<param name="encoding" value="utf-8" />
+		<!-- 设置监视器输出方式 -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%d{yyyy-MM-dd HH:mm:ss:SSS} %-4r [%t] %-5p %l : %m%n" />
+		</layout>
+		<!--滤镜设置输出的级别 -->
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="levelMin" value="DEBUG" />
+			<param name="levelMax" value="FATAL" />
+			<param name="AcceptOnMatch" value="true" />
+		</filter>
+	</appender>
+
+	<!-- 将日志输出到数据库中 -->
+	<appender name="DBAppender" class="org.apache.log4j.jdbc.JDBCAppender">
+		<param name="encoding" value="utf-8" />
+        <param name="URL" value="jdbc:mysql://127.0.0.1:3306/35zhiwei?noAccessToProcedureBodies=true&amp;characterEncoding=UTF-8" />
+        <param name="Driver" value="com.mysql.jdbc.Driver"/>
+        <param name="User" value="root" />
+        <param name="Password" value="root"/>
+        <param name="Sql" value="INSERT INTO t_log(create_time, log_content, log_level, log_class) VALUES ('%d{yyyy-MM-dd HH:mm:ss}', '%m', '%p', '%c')"/>
+    </appender>
+
+	<root>
+		<priority value="debug" />
+		<!-- <appender-ref ref="ConsoleAppender" /> -->
+		<appender-ref ref="STDOUT" />
+		<!-- <appender-ref ref="FILE" /> -->
+		<!-- <appender-ref ref="DailyFILE" /> -->
+		<!-- <appender-ref ref="DBAppender" /> -->
+	</root>
+</log4j:configuration>

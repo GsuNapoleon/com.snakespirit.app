@@ -55,6 +55,12 @@
 			<tx:method name="*"/>
 		</tx:attributes>
 	</tx:advice>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:mybatis-cfg.xml" />
+		<property name="mapperLocations" value="classpath*:com/snakespirit/app/dao/mybatis/*SQL.xml" />
+		<property name="typeAliasesPackage" value="com.snakespirit.app.model"></property>
+	</bean>	
 	
 	<!-- 注释掉mongodb的配置
 	<mongo:mongo host="${mongo.host}" port="${mongo.port}">

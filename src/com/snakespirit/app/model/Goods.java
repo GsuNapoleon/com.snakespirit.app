@@ -8,5 +8,5 @@ package com.snakespirit.app.model;
  *
  */
 public class Goods {
-
+	
 }

@@ -19,7 +19,7 @@
 	<context:component-scan base-package="com.snakespirit.app.*" />
 	<!-- <util:properties id="config" location="classpath:config.properties" /> -->
 	<context:property-placeholder location="classpath:jdbc.properties" />
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 	    <property name="driverClass" value="${jdbc.DriverClass}"/>
 	    <property name="jdbcUrl" value="${jdbc.JdbcUrl}"/>
 	    <property name="user" value="${jdbc.User}"/>
@@ -55,14 +55,15 @@
 			<tx:method name="*"/>
 		</tx:attributes>
 	</tx:advice>
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="ssFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis-cfg.xml" />
 		<property name="mapperLocations" value="classpath*:com/snakespirit/app/dao/mybatis/*.xml" />
 		<property name="typeAliasesPackage" value="com.snakespirit.app.model" />
 	</bean>	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.snakespirit.app.*.dao" />
+		<property name="sqlSessionFactoryBeanName" value="ssFactory" />
+		<property name="basePackage" value="com.snakespirit.app.dao" />
 	</bean>
 	
 	<!-- 注释掉mongodb的配置

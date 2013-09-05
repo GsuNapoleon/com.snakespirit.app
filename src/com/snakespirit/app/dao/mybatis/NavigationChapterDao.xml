@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.snakespirit.app.dao.NavigationChapterDao">
+	<select id="select" parameterType="com.snakespirit.app.model.NavigationChapter" resultType="com.snakespirit.app.model.NavigationChapter">
+		select 
+			id, name, visible, creator, updator, create_time as createTime, update_time as updateTime 
+		from
+			t_navigation_chapter
+		<where>
+			<if test="name != null and name != ''">
+				name like #{name}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insert" parameterType="com.snakespirit.app.model.NavigationChapter">
+		insert into t_navigation_chapter(`name`,  `visible`,  `creator`,  `updator`,  `create_time`,  `update_time`) 
+		values(#{name}, #{visible}, #{creator}, #{updator}, #{createTime}, #{updateTime})
+	</insert>
+	
+	<update id="update" parameterType="com.snakespirit.app.model.NavigationChapter">
+		update t_navigation_chapter 
+		set name=#{name}, visible=#{visible}, updator=#{updator}, update_time=#{updateTime}
+		where id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from t_navigation_chapter where id = #{id}
+	</delete>
+</mapper> 

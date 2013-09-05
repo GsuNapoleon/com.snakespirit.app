@@ -20,6 +20,21 @@
 .goodsmaintain{
 	background: url(../icon/goods_1.png) no-repeat !important;
 }
+.tea {
+	background: url(../icon/t_01.png) no-repeat !important;
+}
+.tea_chapter {
+	background: url(../icon/t_04.png) no-repeat !important;
+}
+.tea_part {
+	background: url(../icon/t_05.png) no-repeat !important;
+}
+.tea_content {
+	background: url(../icon/t_03.png) no-repeat !important;
+}
+.tea_website {
+	background: url(../icon/t_02.png) no-repeat !important;
+}
 /*------------------------------------------------------------------------------------------*/
 .setting {
 	background: url(../icon/setting.png) no-repeat !important;

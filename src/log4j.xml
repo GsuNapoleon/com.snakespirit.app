@@ -33,7 +33,7 @@
 	<appender name="DailyFILE" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="encoding" value="utf-8" />
 		<!-- 设置File参数：日志输出文件名 -->
-		<param name="File" value="./log/daily.log" />
+		<param name="File" value="E:\\egg_pains_log\\app\\snakespirit.app.log" />
 		<!-- 设置是否在重新启动服务时，在原有日志的基础添加新日志 -->
 		<param name="Append" value="true" />
 		<param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
@@ -82,7 +82,7 @@
 		<!-- <appender-ref ref="ConsoleAppender" /> -->
 		<appender-ref ref="STDOUT" />
 		<!-- <appender-ref ref="FILE" /> -->
-		<!-- <appender-ref ref="DailyFILE" /> -->
+		<appender-ref ref="DailyFILE" />
 		<!-- <appender-ref ref="DBAppender" /> -->
 	</root>
 </log4j:configuration>

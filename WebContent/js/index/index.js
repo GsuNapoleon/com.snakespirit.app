@@ -50,6 +50,33 @@ Ext.onReady(function() {
 	                		url: "../module/goods/goodsmaintainList.jsp"
 	                	}
 	            	] 
+	            }, {
+	            	text: "茶信息管理",
+	            	iconCls: 'tea',
+	            	expanded: true, 
+	            	children: [
+	                	{
+	                		text:'章信息维护',
+		  					iconCls: 'tea_chapter',
+	                		leaf: true ,
+	                		url: "../module/tea/chapterMaintainList.jsp"
+	                	}, {
+	                		text:'节信息维护',
+		  					iconCls: 'tea_part',
+	                		leaf: true, 
+	                		url: "../module/tea/partMaintainList.jsp"
+	                	}, {
+	                		text:'内容信息维护',
+		  					iconCls: 'tea_content',
+	                		leaf: true, 
+	                		url: "../module/tea/contentMaintainList.jsp"
+	                	}, {
+	                		text:'网站信息维护',
+		  					iconCls: 'tea_website',
+	                		leaf: true ,
+	                		url: "../module/tea/websiteMaintainList.jsp"
+	                	}
+	            	]
 	            }
 	        ]
 	    }

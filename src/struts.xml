@@ -4,11 +4,14 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-
+	
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+    <constant name="struts.objectFactory" value="spring" />
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     <constant name="struts.devMode" value="true" />
-    <constant name="struts.action.extension" value="html,action,do"></constant>
+    <constant name="struts.action.extension" value="html,action,do" />
 
+	<!-- 
     <package name="default" namespace="/" extends="struts-default">
         <default-action-ref name="index" />
 
@@ -26,8 +29,13 @@
                 <param name="namespace">/example</param>
             </result>
         </action>
-    </package>
+    </package> -->
 
     <!-- Add packages here -->
-
+	<package name="tea" namespace="/tea" extends="json-default">
+		<action name="*" class="com.snakespirit.app.action.ChapterAction" method="{1}">
+			<interceptor-ref name="json" />
+			<result name="json" type="json"></result>
+		</action>
+	</package>
 </struts>
